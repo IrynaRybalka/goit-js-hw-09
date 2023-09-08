@@ -14,13 +14,17 @@ function handlerSubmit(evt) {
   const delay = Number(elements.delay.value);
   const step = Number(elements.step.value);
   const amount = Number(elements.amount.value);
-  let position;
+  let newDelay = delay;
   for (let i = 1; i <= amount; i += 1) {
-    createPromise(i, delay);
-    // delay += step;
+    if (i > 0) {
+      newDelay += step;
+    }
+    createPromise(i+1, newDelay);
+    
   }
 };
 
+  
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
